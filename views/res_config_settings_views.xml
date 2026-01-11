@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_whatsapp" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.whatsapp</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string='WhatsApp' name='whatsapp_integration'
+                    logo='/crm_whatsapp_integration/static/description/wa_icon.png'>
+                    <block title='WhatsApp Integration' name='whatsapp_settings'>
+                        <setting string="WhatsApp Provider" help='Select your WhatsApp API provider'>
+                            <field name="whatsapp_provider" widget='radio' />
+                        </setting>
+                    </block>
+                    <block title='Meta WhatsApp API' name='whatsapp_meta_settings'
+                        invisible='whatsapp_provider != "meta"'>
+                        <setting string='Access Token' help='Your permanent access token from Meta'>
+                            <field name="whatsapp_meta_access_token" password='True'
+                                placeholder='Enter your Meta access token' />
+                        </setting>
+                        <setting string="Phone Number ID"
+                            help="The ID of your WhatsApp Business phone number">
+
+                            <field name="whatsapp_meta_phone_number_id"
+                                placeholder="e.g., 123456789012345" />
+
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
