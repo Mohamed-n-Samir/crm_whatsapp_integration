@@ -6,3 +6,8 @@ class WhatsAppService(models.AbstractModel):
     
     _name = 'whatsapp.service'
     _description = 'WhatsApp API Service'
+    
+    
+    # Helper Methods
+    def _correct_phone_number_structure(self):
+        pass
