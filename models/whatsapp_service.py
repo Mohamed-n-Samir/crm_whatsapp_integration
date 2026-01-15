@@ -11,3 +11,6 @@ class WhatsAppService(models.AbstractModel):
     # Helper Methods
     def _correct_phone_number_structure(self):
         pass
+    
+    def _check_connection(self):
+        pass
