@@ -14,3 +14,8 @@ class WhatsAppService(models.AbstractModel):
     
     def _check_connection(self):
         pass
+    
+    
+    # Methods
+    def send_whatsapp_message(self):
+        pass
