@@ -13,6 +13,16 @@
                         <setting string="WhatsApp Provider" help='Select your WhatsApp API provider'>
                             <field name="whatsapp_provider" widget='radio' />
                         </setting>
+                        <setting string="Configuration Status">
+                            <field name="whatsapp_api_is_configured" invisible='1' />
+                            <span invisible="not whatsapp_api_is_configured"
+                                class="badge text-bg-success">
+                                <i class="fa fa-check-circle me-1" /> Configured </span>
+
+                            <span invisible="whatsapp_api_is_configured"
+                                class="badge text-bg-warning">
+                                <i class="fa fa-exclamation-triangle me-1" /> Not Configured </span>
+                        </setting>
                     </block>
                     <block title='Meta WhatsApp API' name='whatsapp_meta_settings'
                         invisible='whatsapp_provider != "meta"'>
