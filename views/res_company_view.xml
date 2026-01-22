@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_company_form_inherit_whatsapp" model="ir.ui.view">
+        <field name="name">res.company.view.form.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="whatsapp_configuration" string="WhatsApp Conf.">
+                    <group title='WhatsApp Integration' name='whatsapp_settings'>
+                        <field name="whatsapp_provider" widget='radio'
+                            help='Select your WhatsApp API provider' />
+                    </group>
+                    <group title='Meta WhatsApp API' name='whatsapp_meta_settings'
+                        invisible='whatsapp_provider != "meta"'>
+                        <group>
+                            <field name="whatsapp_meta_access_token" password='True'
+                                placeholder='Enter your Meta access token'
+                                help='Your permanent access token from Meta' />
+                        </group>
+                        <group>
+                            <field name="whatsapp_meta_phone_number_id"
+                                placeholder="e.g., 123456789012345"
+                                help="The ID of your WhatsApp Business phone number" />
+                        </group>
+                    </group>
+                    <group title='WhatsApp Message Template' name='whatsapp_message_template_settings' invisible='not whatsapp_provider'>
+                        <field name="whatsapp_message_template" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

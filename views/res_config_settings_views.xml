@@ -38,6 +38,12 @@
 
                         </setting>
                     </block>
+                    <block title='Message Template' name='whatsapp_message_template_block'
+                        invisible='not whatsapp_provider'>
+                        <setting string='Message' help='The Message Template That wll be sent.'>
+                            <field name="whatsapp_message_template" widget="many2one"/>
+                        </setting>
+                    </block>
                 </app>
             </xpath>
         </field>

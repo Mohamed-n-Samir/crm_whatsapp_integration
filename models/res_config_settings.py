@@ -6,30 +6,26 @@ class ResConfigSettings(models.TransientModel):
     _inherit = "res.config.settings"
 
     whatsapp_provider = fields.Selection(
-        [("meta", "Meta Cloud API")],  # One for now
-        string="Whatsapp Provider",
-        default="meta",
-        config_parameter="whatsapp.provider",
+        related='company_id.whatsapp_provider',
+        readonly=False,
         help="Select the WhatsApp API provier to use.",
     )
 
-    # whatsapp_default_template = fields.Text(
-    #     string="Default Message Template",
-    #     default="""Hello 'contact', thanks for your interest in our company 
-    #                 we will contact you shortly. - 'salesperson'""",
-    #     config_parameter="whatsapp.default_template",
-    #     help="default message template for whatsapp messages",
-    # )
+    whatsapp_message_template = fields.Many2one(
+        related='company_id.whatsapp_message_template',
+        readonly=False,
+        help="message template for whatsapp messages",
+    )
 
     whatsapp_meta_access_token = fields.Char(
-        string="Meta Access Token",
+        related="company_id.whatsapp_meta_access_token",
         help="Your Meta WhatsApp Business API access token.",
-        config_parameter="whatsapp.meta_access_token",
+        readonly=False,
     )
     whatsapp_meta_phone_number_id = fields.Char(
-        string="Meta Phone Number ID",
+        related='company_id.whatsapp_meta_phone_number_id',
         help="your WhatsApp Business Phone Number ID from Meta",
-        config_parameter="whatsapp.meta_phone_number_id",
+        readonly=False,
     )
 
     whatsapp_api_is_configured = fields.Boolean(
@@ -72,3 +68,4 @@ class ResConfigSettings(models.TransientModel):
                 "sticky": False,
             },
         }
+        
