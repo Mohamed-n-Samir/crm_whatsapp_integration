@@ -9,6 +9,14 @@
             <xpath expr="//form" position="inside">
                 <app string='WhatsApp' name='whatsapp_integration'
                     logo='/crm_whatsapp_integration/static/description/wa_icon.png'>
+                    <div class="row align-items-center mx-2 my-1" >
+                        <div class="col-auto">
+                            <button name="action_test_api_connection"
+                                string="Check API Connection"
+                                type="object"
+                                class="btn btn-outline-primary" />
+                        </div>
+                    </div>
                     <block title='WhatsApp Integration' name='whatsapp_settings'>
                         <setting string="WhatsApp Provider" help='Select your WhatsApp API provider'>
                             <field name="whatsapp_provider" widget='radio' />
@@ -41,7 +49,7 @@
                     <block title='Message Template' name='whatsapp_message_template_block'
                         invisible='not whatsapp_provider'>
                         <setting string='Message' help='The Message Template That wll be sent.'>
-                            <field name="whatsapp_message_template" widget="many2one"/>
+                            <field name="whatsapp_message_template" widget="many2one" />
                         </setting>
                     </block>
                 </app>

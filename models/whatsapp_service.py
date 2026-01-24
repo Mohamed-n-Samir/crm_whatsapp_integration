@@ -1,5 +1,5 @@
 from odoo import models, api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 import re
 
@@ -45,6 +45,18 @@ class WhatsAppService(models.AbstractModel):
         
         return normalized
 
-    def send_message(self):
+    def check_connection(self):
         pass
+
+    def send_message(self, provider, phone, message):
+        
+        if provider == 'meta':
+            return self._send_via_meta(phone, message)
+        else:
+            raise UserError(f"Unknown WhatsApp provider: {provider}")
+        
+        
+    def _send_via_meta(self, phone, message):
+        pass
+        
     
